@@ -19,23 +19,30 @@ namespace homework_1
         public Form1()
         {
             InitializeComponent();
+
+            
         }
 
         private void btnLoadImage_Click(object sender, EventArgs e)
         {
-            openFileDialogSelectImage.Filter = "Файлы изображений|*.png;*.jpg;*.jpeg|Все файлы|*.*";
+            openFileDialogSelectImage.Filter = "Файлы изображений|*.png;*.jpg;*.jpeg";
            if (openFileDialogSelectImage.ShowDialog() == DialogResult.OK)
             {
-                string path = openFileDialogSelectImage.FileName;
-                ImageInfo newImage = new ImageInfo(path, "Изображение");
-                images.Add(newImage);
+                string[] paths = openFileDialogSelectImage.FileNames;
+                foreach (string path in paths)
+                {
+                    ImageInfo newImage = new ImageInfo(path, Path.GetFileNameWithoutExtension(path));
+                    images.Add(newImage);                
+                }
+                UpdateListBox();
+                listBoxSelectImage.SelectedItem = images.Last();
             }
 
         }
 
         private void btnLoadFromFile_Click(object sender, EventArgs e)
         {
-            openFileDialogSelectFile.Filter = "Текстовые файлы|*.txt|Все файлы|*.*";
+            openFileDialogSelectFile.Filter = "Текстовые файлы|*.txt";
             if (openFileDialogSelectFile.ShowDialog() == DialogResult.OK)
             {
                 string path = openFileDialogSelectFile.FileName;
@@ -43,9 +50,13 @@ namespace homework_1
                 foreach (string line in lines)
                 {
                     string[] parts = line.Split(',');
-                    ImageInfo newImage = new ImageInfo(parts[0].Trim(), parts[1].Trim());
-                    images.Add(newImage);
+                    if (File.Exists(parts.First()))
+                    {
+                        ImageInfo newImage = new ImageInfo(parts.First().Trim(), parts.Last().Trim());
+                        images.Add(newImage);
+                    }
                 }
+                UpdateListBox();
             }
         }
 
@@ -64,5 +75,52 @@ namespace homework_1
                 MessageBox.Show("Файл сохранен");
             }
         }
+
+        private void listBoxSelectImage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (listBoxSelectImage.SelectedItem is ImageInfo image)
+            {
+                try
+                {
+                    imageBox.Image = Image.FromFile(image.Path);
+                    textBoxImageName.Text = image.Title;
+                }
+                catch (Exception ex)
+                {
+                    imageBox.Image = Image.FromFile("../../resources/errorImage.png");
+                    MessageBox.Show("Путь не найден");
+                }
+            }
+        }
+
+        private void UpdateListBox()
+        {
+            listBoxSelectImage.DataSource = null;
+            listBoxSelectImage.DataSource = images;
+            listBoxSelectImage.DisplayMember = "Title";
+            listBoxSelectImage.ValueMember = "Path";
+        }
+
+        private void btnRename_Click(object sender, EventArgs e)
+        {
+            if (listBoxSelectImage.SelectedItem is ImageInfo image)
+            {
+                image.Title = textBoxImageName.Text;
+                UpdateListBox();
+            }    
+        }
+
+        private void textBoxImageName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnRename_Click(sender, e);
+                e.Handled = e.SuppressKeyPress = true;
+
+            }
+        }
+
+        
     }
 }

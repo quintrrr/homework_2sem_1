@@ -38,6 +38,7 @@
             this.openFileDialogSelectFile = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.btnRename = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,23 +67,28 @@
             this.imageBox.Location = new System.Drawing.Point(168, 20);
             this.imageBox.Name = "imageBox";
             this.imageBox.Size = new System.Drawing.Size(561, 391);
+            this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imageBox.TabIndex = 2;
             this.imageBox.TabStop = false;
             // 
             // textBoxImageName
             // 
             this.textBoxImageName.Location = new System.Drawing.Point(168, 423);
+            this.textBoxImageName.MaxLength = 52;
             this.textBoxImageName.Name = "textBoxImageName";
             this.textBoxImageName.Size = new System.Drawing.Size(436, 20);
             this.textBoxImageName.TabIndex = 3;
+            this.textBoxImageName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxImageName_KeyDown);
             // 
             // listBoxSelectImage
             // 
             this.listBoxSelectImage.FormattingEnabled = true;
+            this.listBoxSelectImage.HorizontalScrollbar = true;
             this.listBoxSelectImage.Location = new System.Drawing.Point(23, 20);
             this.listBoxSelectImage.Name = "listBoxSelectImage";
             this.listBoxSelectImage.Size = new System.Drawing.Size(127, 290);
             this.listBoxSelectImage.TabIndex = 4;
+            this.listBoxSelectImage.SelectedIndexChanged += new System.EventHandler(this.listBoxSelectImage_SelectedIndexChanged);
             // 
             // btnLoadImage
             // 
@@ -97,6 +103,7 @@
             // openFileDialogSelectImage
             // 
             this.openFileDialogSelectImage.FileName = "openFileDialog1";
+            this.openFileDialogSelectImage.Multiselect = true;
             // 
             // openFileDialogSelectFile
             // 
@@ -110,6 +117,7 @@
             this.btnRename.TabIndex = 6;
             this.btnRename.Text = "переименовать";
             this.btnRename.UseVisualStyleBackColor = true;
+            this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
             // 
             // Form1
             // 
@@ -143,6 +151,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogSelectFile;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Button btnRename;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
