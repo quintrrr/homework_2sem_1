@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLoadFromFile = new System.Windows.Forms.Button();
             this.btnSaveToFile = new System.Windows.Forms.Button();
             this.imageBox = new System.Windows.Forms.PictureBox();
             this.textBoxImageName = new System.Windows.Forms.TextBox();
             this.listBoxSelectImage = new System.Windows.Forms.ListBox();
+            this.ContextMenuListBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteImage = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLoadImage = new System.Windows.Forms.Button();
             this.openFileDialogSelectImage = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSelectFile = new System.Windows.Forms.OpenFileDialog();
@@ -40,6 +43,7 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
+            this.ContextMenuListBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLoadFromFile
@@ -91,6 +95,7 @@
             // 
             this.listBoxSelectImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxSelectImage.ContextMenuStrip = this.ContextMenuListBox;
             this.listBoxSelectImage.FormattingEnabled = true;
             this.listBoxSelectImage.HorizontalScrollbar = true;
             this.listBoxSelectImage.Location = new System.Drawing.Point(23, 20);
@@ -98,6 +103,22 @@
             this.listBoxSelectImage.Size = new System.Drawing.Size(142, 303);
             this.listBoxSelectImage.TabIndex = 4;
             this.listBoxSelectImage.SelectedIndexChanged += new System.EventHandler(this.listBoxSelectImage_SelectedIndexChanged);
+            this.listBoxSelectImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxSelectImage_MouseDown);
+            // 
+            // ContextMenuListBox
+            // 
+            this.ContextMenuListBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteImage});
+            this.ContextMenuListBox.Name = "ContextMunuListBox";
+            this.ContextMenuListBox.Size = new System.Drawing.Size(196, 26);
+            this.ContextMenuListBox.Opened += new System.EventHandler(this.ContextMunuListBox_Opened);
+            // 
+            // deleteImage
+            // 
+            this.deleteImage.Name = "deleteImage";
+            this.deleteImage.Size = new System.Drawing.Size(195, 22);
+            this.deleteImage.Text = "Удалить изображение";
+            this.deleteImage.Click += new System.EventHandler(this.deleteImage_Click);
             // 
             // btnLoadImage
             // 
@@ -130,7 +151,7 @@
             this.btnRename.UseVisualStyleBackColor = true;
             this.btnRename.Click += new System.EventHandler(this.btnRename_Click);
             // 
-            // Form1
+            // GalleryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,9 +165,10 @@
             this.Controls.Add(this.btnLoadFromFile);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 360);
-            this.Name = "Form1";
+            this.Name = "GalleryForm";
             this.Text = "Галерея";
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
+            this.ContextMenuListBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +187,8 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Button btnRename;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ContextMenuStrip ContextMenuListBox;
+        private System.Windows.Forms.ToolStripMenuItem deleteImage;
     }
 }
 

@@ -97,9 +97,8 @@ namespace homework_1
         private void UpdateListBox()
         {
             listBoxSelectImage.DataSource = null;
-            listBoxSelectImage.DataSource = images;
             listBoxSelectImage.DisplayMember = "Title";
-            listBoxSelectImage.ValueMember = "Path";
+            listBoxSelectImage.DataSource = images;
         }
 
         private void btnRename_Click(object sender, EventArgs e)
@@ -121,6 +120,37 @@ namespace homework_1
             }
         }
 
+        private void listBoxSelectImage_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (listBoxSelectImage.IndexFromPoint(e.X, e.Y) != ListBox.NoMatches)
+                {
+                    listBoxSelectImage.SelectedIndex = listBoxSelectImage.IndexFromPoint(e.X, e.Y);  
+                }
 
+            }
+        }
+
+        private void deleteImage_Click(object sender, EventArgs e)
+        {
+            if (listBoxSelectImage.SelectedItem is ImageInfo image)
+            {
+                images.Remove(image);
+                imageBox.Image = null;
+                textBoxImageName.Text = "";
+                UpdateListBox();
+                if (listBoxSelectImage.SelectedItem == null && images.Count != 0)
+                {
+                    listBoxSelectImage.SelectedItem = images.Last();
+                    UpdateListBox();
+                }
+            }
+        }
+
+        private void ContextMunuListBox_Opened(object sender, EventArgs e)
+        {
+            deleteImage.Enabled = listBoxSelectImage.SelectedItem != null;
+        }
     }
 }
