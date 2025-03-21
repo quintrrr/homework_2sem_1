@@ -31,8 +31,7 @@ namespace homework_1
                 string[] paths = openFileDialogSelectImage.FileNames;
                 foreach (string path in paths)
                 {
-                    ImageInfo newImage = new ImageInfo(path, Path.GetFileNameWithoutExtension(path));
-                    images.Add(newImage);                
+                    images.Add(new ImageInfo(path, Path.GetFileNameWithoutExtension(path)));                
                 }
                 UpdateListBox();
                 listBoxSelectImage.SelectedItem = images.Last();
@@ -50,10 +49,14 @@ namespace homework_1
                 foreach (string line in lines)
                 {
                     string[] parts = line.Split(',');
-                    if (File.Exists(parts.First()))
+                    string imagePath = parts.First().Trim();
+                    if (File.Exists(imagePath))
                     {
-                        ImageInfo newImage = new ImageInfo(parts.First().Trim(), parts.Last().Trim());
-                        images.Add(newImage);
+                        string imageTitle = parts.Last().Trim();
+                        if (imagePath == imageTitle || imageTitle == "") 
+                            imageTitle = Path.GetFileNameWithoutExtension(imagePath);
+
+                        images.Add(new ImageInfo(imagePath, imageTitle));
                     }
                 }
                 UpdateListBox();
