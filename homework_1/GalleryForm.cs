@@ -12,11 +12,11 @@ using homework_1.classes;
 
 namespace homework_1
 {
-    public partial class Form1: Form
+    public partial class GalleryForm: Form
     {
         private List<ImageInfo> images = new List<ImageInfo>();
 
-        public Form1()
+        public GalleryForm()
         {
             InitializeComponent();
 
