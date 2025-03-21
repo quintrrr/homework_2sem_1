@@ -73,6 +73,9 @@
             this.imageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.imageBox.Image = global::homework_1.Properties.Resources.backgroundImage;
+            this.imageBox.InitialImage = global::homework_1.Properties.Resources.backgroundImage;
             this.imageBox.Location = new System.Drawing.Point(182, 20);
             this.imageBox.Name = "imageBox";
             this.imageBox.Size = new System.Drawing.Size(547, 400);
@@ -155,6 +158,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(744, 461);
             this.Controls.Add(this.btnRename);
             this.Controls.Add(this.btnLoadImage);
@@ -163,6 +168,7 @@
             this.Controls.Add(this.imageBox);
             this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.btnLoadFromFile);
+            this.DoubleBuffered = true;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 360);
             this.Name = "GalleryForm";

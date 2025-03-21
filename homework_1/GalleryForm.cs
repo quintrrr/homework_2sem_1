@@ -136,7 +136,7 @@ namespace homework_1
             if (listBoxSelectImage.SelectedItem is ImageInfo image)
             {
                 images.Remove(image);
-                imageBox.Image = null;
+                imageBox.Image = imageBox.InitialImage;
                 textBoxImageName.Text = "";
                 UpdateListBox();
                 if (listBoxSelectImage.SelectedItem == null && images.Count != 0)
