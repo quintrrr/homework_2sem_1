@@ -121,6 +121,6 @@ namespace homework_1
             }
         }
 
-        
+
     }
 }

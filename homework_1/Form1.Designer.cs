@@ -44,9 +44,10 @@
             // 
             // btnLoadFromFile
             // 
-            this.btnLoadFromFile.Location = new System.Drawing.Point(23, 366);
+            this.btnLoadFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLoadFromFile.Location = new System.Drawing.Point(23, 375);
             this.btnLoadFromFile.Name = "btnLoadFromFile";
-            this.btnLoadFromFile.Size = new System.Drawing.Size(128, 36);
+            this.btnLoadFromFile.Size = new System.Drawing.Size(142, 36);
             this.btnLoadFromFile.TabIndex = 0;
             this.btnLoadFromFile.Text = "загрузить из файла";
             this.btnLoadFromFile.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             // 
             // btnSaveToFile
             // 
-            this.btnSaveToFile.Location = new System.Drawing.Point(23, 407);
+            this.btnSaveToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveToFile.Location = new System.Drawing.Point(23, 416);
             this.btnSaveToFile.Name = "btnSaveToFile";
-            this.btnSaveToFile.Size = new System.Drawing.Size(128, 36);
+            this.btnSaveToFile.Size = new System.Drawing.Size(142, 36);
             this.btnSaveToFile.TabIndex = 1;
             this.btnSaveToFile.Text = "сохранить ";
             this.btnSaveToFile.UseVisualStyleBackColor = true;
@@ -64,37 +66,45 @@
             // 
             // imageBox
             // 
-            this.imageBox.Location = new System.Drawing.Point(168, 20);
+            this.imageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imageBox.Location = new System.Drawing.Point(182, 20);
             this.imageBox.Name = "imageBox";
-            this.imageBox.Size = new System.Drawing.Size(561, 391);
+            this.imageBox.Size = new System.Drawing.Size(547, 400);
             this.imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imageBox.TabIndex = 2;
             this.imageBox.TabStop = false;
             // 
             // textBoxImageName
             // 
-            this.textBoxImageName.Location = new System.Drawing.Point(168, 423);
+            this.textBoxImageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxImageName.Location = new System.Drawing.Point(182, 432);
             this.textBoxImageName.MaxLength = 52;
             this.textBoxImageName.Name = "textBoxImageName";
-            this.textBoxImageName.Size = new System.Drawing.Size(436, 20);
+            this.textBoxImageName.Size = new System.Drawing.Size(422, 20);
             this.textBoxImageName.TabIndex = 3;
             this.textBoxImageName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxImageName_KeyDown);
             // 
             // listBoxSelectImage
             // 
+            this.listBoxSelectImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBoxSelectImage.FormattingEnabled = true;
             this.listBoxSelectImage.HorizontalScrollbar = true;
             this.listBoxSelectImage.Location = new System.Drawing.Point(23, 20);
             this.listBoxSelectImage.Name = "listBoxSelectImage";
-            this.listBoxSelectImage.Size = new System.Drawing.Size(127, 290);
+            this.listBoxSelectImage.Size = new System.Drawing.Size(142, 303);
             this.listBoxSelectImage.TabIndex = 4;
             this.listBoxSelectImage.SelectedIndexChanged += new System.EventHandler(this.listBoxSelectImage_SelectedIndexChanged);
             // 
             // btnLoadImage
             // 
-            this.btnLoadImage.Location = new System.Drawing.Point(23, 325);
+            this.btnLoadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLoadImage.Location = new System.Drawing.Point(23, 334);
             this.btnLoadImage.Name = "btnLoadImage";
-            this.btnLoadImage.Size = new System.Drawing.Size(128, 36);
+            this.btnLoadImage.Size = new System.Drawing.Size(142, 36);
             this.btnLoadImage.TabIndex = 5;
             this.btnLoadImage.Text = "загрузить изображние";
             this.btnLoadImage.UseVisualStyleBackColor = true;
@@ -111,7 +121,8 @@
             // 
             // btnRename
             // 
-            this.btnRename.Location = new System.Drawing.Point(610, 419);
+            this.btnRename.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRename.Location = new System.Drawing.Point(610, 428);
             this.btnRename.Name = "btnRename";
             this.btnRename.Size = new System.Drawing.Size(119, 26);
             this.btnRename.TabIndex = 6;
@@ -123,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 452);
+            this.ClientSize = new System.Drawing.Size(744, 461);
             this.Controls.Add(this.btnRename);
             this.Controls.Add(this.btnLoadImage);
             this.Controls.Add(this.listBoxSelectImage);
@@ -131,8 +142,10 @@
             this.Controls.Add(this.imageBox);
             this.Controls.Add(this.btnSaveToFile);
             this.Controls.Add(this.btnLoadFromFile);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(500, 360);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Галерея";
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
