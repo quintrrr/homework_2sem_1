@@ -81,15 +81,14 @@ namespace homework_1
 
             if (listBoxSelectImage.SelectedItem is ImageInfo image)
             {
+                textBoxImageName.Text = image.Title;
                 try
                 {
                     imageBox.Image = Image.FromFile(image.Path);
-                    textBoxImageName.Text = image.Title;
                 }
                 catch (Exception ex)
                 {
                     imageBox.Image = Image.FromFile("../../resources/errorImage.png");
-                    MessageBox.Show("Путь не найден");
                 }
             }
         }
